@@ -33,14 +33,14 @@ def main():
 
         log = Classifier(ft_in=z.shape[1], nb_classes=torch.max(test_data.y).item() + 1)
         num_trials =500
-        # create_few_data_folder(num_trials, args.test_dataset, test_data, torch.max(test_data.y).item() + 1)
+        create_few_data_folder(num_trials, args.test_dataset, test_data, torch.max(test_data.y).item() + 1)
 
         shot_num = args.shot_num
         acc_list = []
         for i in range(num_trials):
             sample_data_foler_path = "./Experiment/sample_data/Node/{}/{}_shot/{}".format(args.test_dataset, shot_num, i + 1)
-            idx_train = torch.load(f"{sample_data_foler_path}/train_idx.pt").type(torch.long).to('cuda')
-            idx_test = torch.load(f"{sample_data_foler_path}/test_idx.pt").type(torch.long).to('cuda')
+            idx_train = torch.load(f"{sample_data_foler_path}/train_idx.pt", weights_only=True).type(torch.long).to('cuda')
+            idx_test = torch.load(f"{sample_data_foler_path}/test_idx.pt", weights_only=True).type(torch.long).to('cuda')
             log.forward(z[idx_train], test_data.y[idx_train], train=1).float().cuda()
             batch_size = 500
             total_correct = 0

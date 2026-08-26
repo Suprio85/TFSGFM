@@ -1,5 +1,5 @@
 import torch_geometric.transforms as T
-from torch_geometric.datasets import Planetoid, WebKB, WikipediaNetwork
+from torch_geometric.datasets import Planetoid, WebKB, WikipediaNetwork, Amazon
 
 
 def load_dataset(dataset_name, dataset_dir, args):
@@ -13,6 +13,11 @@ def load_dataset(dataset_name, dataset_dir, args):
             transform=T.NormalizeFeatures())
     elif dataset_name in ['Chameleon', 'Squirrel']:
         return WikipediaNetwork(
+            dataset_dir,
+            dataset_name,
+            transform=T.NormalizeFeatures())
+    elif dataset_name in ['Photo', 'Computers']:
+        dataset = Amazon(
             dataset_dir,
             dataset_name,
             transform=T.NormalizeFeatures())
