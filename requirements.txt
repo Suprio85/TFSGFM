@@ -4,7 +4,7 @@ torchvision
 torchaudio
 torch-geometric
 torch-scatter
-scikit-learn==1.6.1
-scipy==1.13.1
-networkx==3.2.1
-numpy==2.0.1
+scikit-learn
+scipy
+networkx
+numpy
