@@ -6,7 +6,7 @@ def load_dataset(dataset_name, dataset_dir, args):
     if dataset_name in ['Cora', 'CiteSeer', 'PubMed']:
         dataset = Planetoid(dataset_dir, name=dataset_name,
                             transform=T.NormalizeFeatures())
-    elif dataset_name in ['Cornell']:
+    elif dataset_name in ['Cornell', 'Texas', 'Wisconsin']:
         return WebKB(
             dataset_dir,
             dataset_name,
